@@ -7,7 +7,7 @@ import Form from "./components/Form";
 function App() {
   return (
     <div className="App">
-      <h1>hare krishna </h1>
+      {/* <h1>hare krishna </h1> */}
       <div className="container w-50 border">
           <Form/>
           
