@@ -1,0 +1,6 @@
+.quill_container{
+    width: 793px; /* A4 Width in pixels */
+    height: 1122px; /* A4 Height in pixels */
+    border: 1px solid #ccc; /* Optional: to visualize the editor boundaries */
+    margin: 20px auto; /* Center the editor */
+}
