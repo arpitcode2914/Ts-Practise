@@ -1,6 +1,68 @@
-.quill_container{
+/* General Page Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7; /* Light background for contrast */
+  }
+  
+  .hed_txt {
+    text-align: center;
+    font-size: 2rem;
+    margin: 20px 0;
+    color: #333;
+    text-transform: capitalize;
+}
+  
+  /* Quill Editor Container */
+  .quill_container {
     width: 793px; /* A4 Width in pixels */
     height: 1122px; /* A4 Height in pixels */
-    border: 1px solid #ccc; /* Optional: to visualize the editor boundaries */
+    border: 1px solid #ccc; /* Light gray border for boundaries */
+    border-radius: 8px; /* Rounded corners for a smooth look */
     margin: 20px auto; /* Center the editor */
-}
+    background: #fff; /* White background for a paper-like effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 20px; /* Add space inside the editor */
+    overflow-y: auto; /* Allow scrolling if content exceeds the height */
+  }
+  
+  /* Button Styles */
+  button.btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    background: #007bff; /* Primary blue color */
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  button.btn:disabled,
+  button.btn.disabled {
+    background: #ccc; /* Gray background for disabled state */
+    cursor: not-allowed;
+  }
+  
+  button.btn:hover:not(:disabled) {
+    background: #0056b3; /* Darker blue on hover */
+  }
+  
+  /* Spinner Styles */
+  .spinner-border {
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  
+  /* Media Query for Responsive Design */
+  @media (max-width: 800px) {
+    .quill_container {
+      width: 90%; /* Adjust width for smaller screens */
+      height: auto; /* Allow height to adjust dynamically */
+    }
+  }
+  
