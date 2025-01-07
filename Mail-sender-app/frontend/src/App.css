@@ -1,106 +1,147 @@
-/* .mail_container {
-    width: 500px;
-    display: flex;
-  
-    justify-content: center;
-  
-    height: 600px;
-    flex-direction: column;
-}
-
-.logo{
-    display: flex;
-    justify-content: center;
-}
-.brand_logo{
-    width: 80px;
-}
- */
-
-
- /* App.css */
-
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4; /* Light background for contrast */
-  }
-  
-  .App {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-  
-  .container {
-    background-color: white; /* White background for container */
-    border-radius: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 100%;
-    max-width: 600px; /* Set a maximum width for the container */
-  }
-  
-  .logo {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .brand_logo {
-    width: 120px; /* Set logo width */
-  }
-  
-  h1 {
-    text-align: center;
-    color: #333333; /* Dark grey for the heading */
-  }
-  
-  .form-label {
-    font-weight: bold;
-    color: #333333; /* Dark grey for labels */
-  }
-  
-  input.form-control,
-  .teaxtarea {
-    /* border: 1px solid #fdd333; Yellow border for input fields */
-    border-radius: 4px;
-    padding: 10px;
-    margin-bottom: 15px;
-    transition: border-color 0.3s;
-  }
-  
-  input.form-control:focus,
-  .teaxtarea:focus {
-    /* border-color: #ff3333; Change border to red on focus */
-    outline: none;
-  }
-  
-  .btn-primary {
-    background-color: #fdd333; /* Yellow background for buttons */
-    color: #000000; /* Black text for buttons */
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .btn-primary:hover {
-    background-color: #ff3333; /* Red background on hover */
-  }
-  
-  .btn-primary.disabled {
-    background-color: #cccccc; /* Gray background for disabled state */
-    cursor: not-allowed;
-  }
-  
-  .textarea {
-    height: 200px; /* Set height for ReactQuill editor */
-    margin-bottom: 15px;
-  }
-  
-  .spinner-border {
-    margin-right: 5px;
-  }
-  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f8fc; /* Light background for contrast */
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Form Container */
+.container {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.brand_logo {
+  width: 80px; /* Adjust logo size */
+}
+
+/* Form Elements */
+.form-label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: inline-block;
+  color: #555;
+}
+
+input.form-control,
+textarea.form-control,
+textarea.teaxtarea,
+.otp_input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dcdfe6;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  color: #555;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+input.form-control:focus,
+textarea.form-control:focus,
+textarea.teaxtarea:focus,
+.otp_input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+textarea.teaxtarea {
+  height: 150px;
+  resize: none;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #fdd333; /* યલો બેકગ્રાઉન્ડ */
+  color: #000000; /* કાળો ટેક્સ્ટ */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+.btn-primary:hover {
+  background-color: #ff3333;
+}
+
+.btn-primary.disabled {
+  background-color: #dcdfe6;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.otp_verify_btn {
+  background-color: #fdd333; /* યલો બેકગ્રાઉન્ડ */
+  color: #000000; /* કાળો ટેક્સ્ટ */
+  padding: 12px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.otp_verify_btn:hover {
+  background-color: #ff3333;
+  color: white;
+}
+
+.spinner-border {
+  margin-right: 8px;
+}
+
+/* OTP Container */
+.otp_container {
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid #dcdfe6;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: baseline;
+}
+
+.otp_container .otp_input {
+  flex: 1;
+  margin-right: 8px;
+}
+
+/* Hide spinners for number input in most browsers */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox
+input[type="number"] {
+  -moz-appearance: textfield;
+} */

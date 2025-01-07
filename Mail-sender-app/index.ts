@@ -22,25 +22,25 @@ app.get('/',(rq:Request,rs:Response) =>{
 app.post('/send-mail',async (rq:Request,rs:Response)=>{
   const{to,subject,text} = rq.body;
 
-  // if (!to || !subject || !text) {
-  //   return rs.status(400).json({12
-  //     message:"missing required field"
-  //   })
-  // }
+  if (!to || !subject || !text) {
+     rs.status(400).json({
+      message:"missing required field"
+    })
+    return
+  }
 
   try {
     
-    const transporter =  nodemailer.createTransport({
-      host: 'smtp.ethereal.email',
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
       port: 587,
       auth: {
-          user: 'marietta.keeling53@ethereal.email',
-          pass: '7QDyc97WTJmXyZv2P9'
+          user: 'democode2914@gmail.com',
+          pass: 'andxydjhnwuzroby'
       }
-  })
-
+  });
     const info = await transporter.sendMail({
-      from:"marietta.keeling53@ethereal.email",
+      from:"democode2914@gmail.com",
       to,
       text,
       subject

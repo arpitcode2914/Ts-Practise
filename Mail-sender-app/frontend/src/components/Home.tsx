@@ -1,24 +1,41 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { HtmlHTMLAttributes, useState } from "react";
 import { toast } from "react-toastify";
-import ReactQuill from "react-quill";
-import 'react-quill/dist/quill.snow.css'; // include styles
+// import ReactQuill from "react-quill";
+// import 'react-quill/dist/quill.snow.css'; // include styles
+
 interface MailType {
   email: string;
   text: string;
   subject: string;
 }
 
+// interface OtpType {
+//   otp: number;
+// }
+// interface VerifyOtpType {
+//   verifyOtp: number;
+// }
+
 const Home = () => {
+  //otp gen
+  const [otp, setOtp] = useState<string>(
+    `${Math.floor(100000 + Math.random() * 900000).toString()}`
+  );
+  // console.log(otp);
+
   const [mail, setMail] = useState<MailType>({
-    email: "marietta.keeling53@ethereal.email",
-    text: "",
-    subject: "",
+    email: "democode2914@gmail.com",
+    text: otp,
+    subject: "OTP",
   });
 
+  const [veryfyOtp, setVeryfyOtp] = useState<string>("");
+
   const [loading, setLoading] = useState(false);
+
   const handleSendMail = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       setLoading(true);
       await axios
@@ -36,7 +53,7 @@ const Home = () => {
             setMail({
               ...mail,
               text: "",
-              subject: "",
+              subject: "hare krishna ",
             });
           }
         })
@@ -50,27 +67,36 @@ const Home = () => {
       setLoading(false);
     }
   };
+
+  // handleVerifyOtp
+  const handleVerifyOtp = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (otp === veryfyOtp) {
+      toast.success("otp verify success");
+    } else {
+      toast.error("wrong otp pls enter valid otp");
+    }
+  };
   return (
-    <div>
+    <>
+      <div>
         <form action="" onSubmit={handleSendMail}>
+          <div className="mb-3">
+            <label htmlFor="exampleFormControlInput1" className="form-label">
+              To
+            </label>
+            <input
+              type="email"
+              className="form-control"
+              id="exampleFormControlInput1"
+              placeholder="name@example.com"
+              value={mail.email}
+              disabled
+              required
+            />
+          </div>
 
-        
-      <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">
-          To
-        </label>
-        <input
-          type="email"
-          className="form-control"
-          id="exampleFormControlInput1"
-          placeholder="name@example.com"
-          value={mail.email}
-          disabled
-          required
-        />
-      </div>
-
-      <div className="mb-3">
+          {/* <div className="mb-3">
         <label htmlFor="exampleFormControlInput1" className="form-label">
           Subject
         </label>
@@ -80,12 +106,13 @@ const Home = () => {
           id="exampleFormControlInput1"
           placeholder="subject..."
           value={mail.subject}
+          disabled
           required
           onChange={(e) => setMail({ ...mail, subject: e.target.value })} //adding type
         />
-      </div>
+      </div> */}
 
-      <div className="mb-3">
+          {/* <div className="mb-3">
         <label htmlFor="exampleFormControlTextarea1" className="form-label">
           Message
         </label>
@@ -106,7 +133,7 @@ const Home = () => {
            ],
          }}
         />
-        {/* <textarea
+        <textarea
           className="form-control"
           id="exampleFormControlTextarea1"
           rows={3}
@@ -114,32 +141,53 @@ const Home = () => {
           defaultValue={""}
           placeholder="Type..."
          
-        /> */}
-      </div>
+        />
+      </div> */}
 
-      <div>
-        {/* <button className="btn btn-primary" onClick={handleSendMail}>
+          <div>
+            {/* <button className="btn btn-primary" onClick={handleSendMail}>
           Send
         </button> */}
-        <button className={`btn btn-primary ${loading? "disabled" : " "}`} type="submit" >
-            {
-                loading ? (
-                    <>
-                    <span
-                      className="spinner-border spinner-border-sm"
-                      aria-hidden="true"
-                      />
-                    <span role="status" className="px-2">Loading...</span>
-                      </>
+            <button
+              className={`btn btn-primary ${loading ? "disabled" : " "}`}
+              type="submit"
+            >
+              {loading ? (
+                <>
+                  <span
+                    className="spinner-border spinner-border-sm"
+                    aria-hidden="true"
+                  />
+                  <span role="status" className="px-2">
+                    Loading...
+                  </span>
+                </>
+              ) : (
+                <span role="status">Send</span>
+              )}
+            </button>
+          </div>
+        </form>
+      </div>
 
-                ) : (
-                    <span role="status">Send</span>
-                )
-            }
+      <div className="otp_container">
+        <input
+          type="number"
+          // style={{ WebkitAppearance: "none", MozAppearance: "textfield" }} // Inline CSS
+          className="otp_input"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setVeryfyOtp(e.target.value)
+          }
+        />
+        <button
+          type="button"
+          onClick={handleVerifyOtp}
+          className="otp_verify_btn"
+        >
+          Verify otp
         </button>
       </div>
-      </form>
-    </div>
+    </>
   );
 };
 
